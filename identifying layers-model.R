@@ -1,0 +1,104 @@
+rm(list=ls())
+setwd("C:\\Users\\ashaw\\Documents\\R\\EPS 236\\EPS 236 final project\\2013-2014")
+load("file_name.Rdata")
+require('signal');require('prospectr');require('pspline')
+difference=list()
+diff_mean=list()
+num_layers=list()
+date=list()
+binnedobs_alt=unlist(read.csv('binnedobs_alt.csv'))
+binnedobs_o3=matrix(unlist(read.csv('binnedobs_o3.csv')),length(binnedobs_alt),33)
+magenta=matrix(0,length(binnedobs_alt),2)
+magenta[,2]=binnedobs_alt
+file_name=file_name[-which(file_name=="th968_2014_06_05_fleout")]
+
+
+for (tick_s in 1:length(file_name)){
+  b=list()
+  load(paste('data_fixed\\data_fixed',file_name[tick_s],'.Rdata',sep=''))
+  #getting rid of missing data
+  red=cbind(b$o3_mr,b$alt,b$temperature)
+  blue=red[complete.cases(red), ]
+  index_tropp=which(blue[,2]>12)[1]
+  ####defining tropopause
+  tprange_bot=which(blue[,2]>8)[1]
+  tprange_top=which(blue[,2]>16)[1]
+  plot_top=which(blue[,2]>12)[1]
+  plot_bot=which(blue[,2]>2)[1]
+  orange=blue[plot_bot:plot_top,]
+  if(is.na(tprange_top)==T){tprange_top=max(blue[,2])}
+  tprange=blue[tprange_bot:tprange_top,]
+  tprange_fit=sm.spline(x=tprange[,2],y=tprange[,3],spar=8E-1)
+  lapse_rate=c(matrix(0,c(1,1)),diff(tprange_fit$ysmth))/c(matrix(0,c(1,1)),diff(tprange_fit$x))
+  tpause=tprange_fit$x[which(abs(lapse_rate)<2)[1]]
+  in_tpause=which.max(binnedobs_alt)
+  #### range of values (purple)
+  in_ft=which(binnedobs_alt>2)[1]
+  
+  magenta[,1]=binnedobs_o3[,tick_s]
+  purple=magenta[in_ft:in_tpause,]
+  # filter out trend
+  z3=splinefun(x=purple[,2],y=purple[,1],method='monoH.FC')
+  z0=list()
+  z0$x=seq(purple[1,2],rev(purple[,2])[1],length.out=3000)
+  z0$ysmth=z3(z0$x)
+  
+  source("finite_differences.R")
+  fdx=finite.differences(z0$x,z0$ysmth)
+  y=sm.spline(x=z0$x,y=fdx,spar=1E-5)
+  y_reshape=approx(x=y$x,y=y$ysmth,xout=z0$x,n=length(fdx))
+  fdx2=finite.differences(z0$x,y_reshape$y)
+  yy=sm.spline(x=z0$x,y=fdx2,spar=1E-2)
+  yy_reshape=approx(x=yy$x,y=yy$ysmth,xout=z0$x,n=length(fdx2))
+  
+  #places where maxima/minima occurs
+  index0_diff1=which(diff(sign(y_reshape$y))!=0)
+  #places where concavity changes occur
+  index0_diff2=which(diff(sign(yy_reshape$y))!=0)
+
+  purple_reshape=approx(x=purple[,2],y=purple[,1],xout=z0$x,n=length(fdx))
+  
+  width=rep(0,length(index0_diff1))
+  maxima=rep(0,length(index0_diff1))
+  max_pt=rep(0,length(index0_diff1))
+  #### looking through the concavity changes and identifying the maxima in them
+  if(length(index0_diff1)>0){  
+    for (tick_alt in 1:length(index0_diff1)){
+      if(index0_diff1[tick_alt]<max(index0_diff2)& index0_diff1[tick_alt]>min(index0_diff2)){
+        upper_in=index0_diff2[which(index0_diff2>index0_diff1[tick_alt])[1]] 
+        upperbound=z0$x[upper_in] 
+        lower_in=index0_diff2[rev(which(index0_diff2<index0_diff1[tick_alt]))[1]]
+        lowerbound=z0$x[lower_in]
+        width[tick_alt]=upperbound-lowerbound
+        if(purple_reshape$y[upper_in]-purple_reshape$y[lower_in]>.01)
+        {width[tick_alt]=.1}
+        maxima[tick_alt]=max(purple_reshape$y[lower_in:upper_in])-.5*(purple_reshape$y[lower_in]+purple_reshape$y[upper_in])    
+        max_pt[tick_alt]=max(purple_reshape$y[lower_in:upper_in])
+      }
+    }     
+    #### look for laminae that meet the criteria
+    maxima_10_in=which(maxima>.01)
+    width_met_in=which(width>.3&width<3.5)
+    ppb_80_in=which(max_pt>.08)
+    
+    date[[tick_s]]=paste(substr(file_name[tick_s],7,10),substr(file_name[tick_s],12,13),substr(file_name[tick_s],15,16),sep='/')
+    #### count the number of layers in the criteria
+    num_layers[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in))
+    png(paste('newbins\\identifyinglayers_bin_adamethod',file_name[tick_s],'.png'))
+    plot(orange[,1],orange[,2],col=rgb(0.5,0.5,0.5,0.4),main=date[[tick_s]],xlab='ppmv',ylab='km',xlim=c(.03,.12),ylim=c(2,10))
+    lines(purple[,1],purple[,2],lty=2)
+    apple=read.csv(paste('obs_max\\obs_max',file_name[tick_s],'.csv'))
+    lines(z0$ysmth,z0$x,col='black')
+    points(apple$obs_max_o3,apple$obs_max_alt,col='red')
+    points(z0$ysmth[index0_diff2],z0$x[index0_diff2],col='blue')
+    mtext(paste('no.layers=',num_layers[[tick_s]],sep=''), side = 4)
+    abline(v=.08, lty=2,col='red')
+    dev.off()
+  }
+  
+}
+
+png('newbins\\nolayers_bin_adamethod.png')
+dateplot=as.Date(unlist(date),'%Y/%m/%d')
+plot(dateplot,unlist(num_layers),type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
+dev.off()
