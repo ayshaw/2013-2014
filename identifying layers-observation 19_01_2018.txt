@@ -27,6 +27,8 @@ for (tick_s in 1:length(file_name)){
   red=cbind(b$o3_mr,b$alt,b$temperature,b$wv_mr)
   blue=red[complete.cases(red), ]
   
+  # index_tropp=which(blue[,2]>12)[1] will delete if code runs fine without this
+  
   #defining altitude range for tropopause
   tprange_bot=which(blue[,2]>8)[1]
   tprange_top=which(blue[,2]>16)[1]
@@ -63,6 +65,8 @@ for (tick_s in 1:length(file_name)){
   index0_diff2=which(diff(sign(yy_reshape$y))!=0)
   purple_reshape=approx(x=purple[,2],y=purple[,1],xout=z0$x,n=length(fdx))
  
+   # layers=logical(length(index0_diff1)) delete if code runs w/o it
+
   #list of variables stored in loop
   width=rep(0,length(index0_diff1))
   maxima=rep(0,length(index0_diff1))
@@ -150,15 +154,13 @@ for (tick_s in 1:length(file_name)){
   }
 
 }
-
-#histograms
 png('hist\\histogram_widths.png')
 hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths',col='red')
 dev.off()
 png('hist\\histogram_altitude.png')
 hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes",col='blue')
 dev.off()
-png('nolayers\\nolayers.png')
+png('nolayers\\nolayers_adamethod.png')
 dateplot=as.Date(unlist(date),'%Y/%m/%d')
 plot(dateplot,num_layers_obs,type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
 save(num_layers_obs,file = "num_layers_obs.Rdata")
