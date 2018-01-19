@@ -111,20 +111,20 @@ for (tick_s in 1:length(file_name)){
   date[[tick_s]]=paste(substr(file_name[tick_s],7,10),substr(file_name[tick_s],12,13),substr(file_name[tick_s],15,16),sep='/')
   num_layers_obs[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in))
   
+  #store maximum values and altitudes and saving it in obs_max files
+  obs_max_o3=max_pt[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
+  obs_max_alt=purple_reshape$x[index0_diff1[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]]
+  write.csv(cbind(obs_max_o3,obs_max_alt),file = paste('obs_max\\obs_max',file_name[tick_s],'.csv'),row.names = F)
+  
   #plotting layers identified
   png(paste('identifyinglayers\\identifyinglayers_observation',file_name[tick_s],'.png'))
   plot(orange[,1],orange[,2],col=rgb(0.5,0.5,0.5,0.4),main=date[[tick_s]],xlab='ppmv',ylab='km',xlim=c(.03,.12),ylim=c(2,10))
   lines(z0$ysmth,z0$x)
-  obs_max_o3=max_pt[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
-  obs_max_alt=purple_reshape$x[index0_diff1[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]]
   points(obs_max_o3,obs_max_alt,col='red')
   points(z0$ysmth[index0_diff2],z0$x[index0_diff2],col='blue')
   mtext(paste('no.layers=',num_layers_obs[[tick_s]],sep=''), side = 4)
   abline(v=.08, lty=2,col='red')
   dev.off()
-  
-  #saving all the observed maxima
-  write.csv(cbind(obs_max_o3,obs_max_alt),file = paste('obs_max\\obs_max',file_name[tick_s],'.csv'),row.names = F)
   
   #plot correlating water vapor and maxima to identify the stratospheric intrusions from pollution
   png(paste('correlating\\correlating_wv_adamethod',file_name[tick_s],'.png'))
