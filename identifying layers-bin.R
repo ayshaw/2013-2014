@@ -35,7 +35,6 @@ for (tick_s in 1:length(file_name)){
   red=cbind(b$o3_mr,b$alt,b$temperature)
   blue=red[complete.cases(red), ]
 
-  # index_tropp=which(blue[,2]>12)[1] delete if code runs alright
 
   #defining altitude range for tropopause
   tprange_bot=which(blue[,2]>8)[1]
@@ -113,13 +112,23 @@ for (tick_s in 1:length(file_name)){
     maxima_10_in=which(maxima>.01)
     width_met_in=which(width>.3&width<3.5)
     ppb_80_in=which(max_pt>.08)
+
+    #record the width and altitude of the layers that met the criteria
+    width_layers[[tick_s]]=width[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
+    altitude_layers[[tick_s]]=altitude_layer[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
+  
     
     #store date and number of qualified layers observed
     date[[tick_s]]=paste(substr(file_name[tick_s],7,10),substr(file_name[tick_s],12,13),substr(file_name[tick_s],15,16),sep='/')
     num_layers[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in))
     
+    #store maximum values and altitudes and saving it in obs_max files
+    bin_max_o3=max_pt[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
+    bin_max_alt=purple_reshape$x[index0_diff1[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]]
+    write.csv(cbind(bin_max_o3,bin_max_alt),file = paste('bin_max\\bin_max',file_name[tick_s],'.csv'),row.names = F)
+  
     #plotting layers identified compared with the observations
-    png(paste('newbins\\identifyinglayers_bin_adamethod',file_name[tick_s],'.png'))
+    png(paste('newbins\\identifyinglayers_bin',file_name[tick_s],'.png'))
     plot(orange[,1],orange[,2],col=rgb(0.5,0.5,0.5,0.4),main=date[[tick_s]],xlab='ppmv',ylab='km',xlim=c(.03,.12),ylim=c(2,10))
     lines(purple[,1],purple[,2],lty=2)
     apple=read.csv(paste('obs_max\\obs_max',file_name[tick_s],'.csv'))
@@ -134,7 +143,7 @@ for (tick_s in 1:length(file_name)){
 }
 
 #plotting layers wrt time compared to the observations
-png('newbins\\nolayers_bin_adamethod.png')
+png('newbins\\nolayers_bin_comparison.png')
 dateplot=as.Date(unlist(date),'%Y/%m/%d')
 plot(dateplot,unlist(num_layers),type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
 dev.off()
