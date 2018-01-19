@@ -51,7 +51,7 @@ for (tick_s in 1:length(file_name)){
   #fit spline to ozone data 
   z0=sm.spline(x=purple[,2],y=purple[,1],spar=1E-1)
   
-  #find the max/min and concavity. I fitted a spline to the data to clean up stragglers
+  #find the max and concavity. I fitted a spline to the data to clean up stragglers
   source("finite_differences.R")
   fdx=finite.differences(z0$x,z0$ysmth)
   y=sm.spline(x=z0$x,y=fdx,spar=1E-1)
@@ -88,7 +88,7 @@ for (tick_s in 1:length(file_name)){
          if(purple_reshape$y[upper_in]-purple_reshape$y[lower_in]>.015)
          {width[tick_alt]=.1}
        
-        #value of maxima is computed from difference from concavity changes
+        #value of maxima is computed from difference of ozone values at concavity changes
         maxima[tick_alt]=max(purple_reshape$y[lower_in:upper_in])-.5*(purple_reshape$y[lower_in]+purple_reshape$y[upper_in])    
         
         #real maxima value is computed from the max point      
@@ -100,14 +100,16 @@ for (tick_s in 1:length(file_name)){
     
   }
 
-  #### look for places that meet the laminae criteria
+  #look for places that meet the laminae criteria
   maxima_10_in=which(maxima>.01)
   width_met_in=which(width>.3&width<3.5)
   ppb_80_in=which(max_pt>.08&max_pt<.2)
+  
+  #record the width and altitude of the layers that met the criteria
   width_layers[[tick_s]]=width[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
   altitude_layers[[tick_s]]=altitude_layer[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
   
-  #store date of the maxima and number of layers observed
+  #store date of the maxima and number of qualified laminae observed
   date[[tick_s]]=paste(substr(file_name[tick_s],7,10),substr(file_name[tick_s],12,13),substr(file_name[tick_s],15,16),sep='/')
   num_layers_obs[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in))
   
