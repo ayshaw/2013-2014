@@ -10,6 +10,8 @@ difference=list()
 diff_mean=list()
 num_layers=list()
 date=list()
+width_layers=list()
+altitude_layers=list()
 
 #load observation data from identifying layers-observation.R
 binnedobs_alt=unlist(read.csv('binnedobs_alt.csv'))
@@ -80,6 +82,7 @@ for (tick_s in 1:length(file_name)){
   width=rep(0,length(index0_diff1))
   maxima=rep(0,length(index0_diff1))
   max_pt=rep(0,length(index0_diff1))
+  altitude_layer=rep(0,length(index0_diff1))
 
    if(length(index0_diff1)>0){  #make sure you don't have a flat profile
     for (tick_alt in 1:length(index0_diff1)){ #looping through all max/min
@@ -105,6 +108,10 @@ for (tick_s in 1:length(file_name)){
         
        	#real maxima vlue is computed from the max ozone value constrained in the bounds
         max_pt[tick_alt]=max(purple_reshape$y[lower_in:upper_in])
+        
+        #altitude of layer is stored as the max_pt altitude
+        altitude_layer[tick_alt]=purple_reshape$x[which.max(purple_reshape$y[lower_in:upper_in])]
+        
       }
     }     
 
