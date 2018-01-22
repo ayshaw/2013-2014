@@ -6,12 +6,6 @@ obs=readRDS('nolayers\\num_layers_obs.rds')
 bin=readRDS('nolayers\\num_layers_bin.rds')
 mod=readRDS('nolayers\\num_layers_mod.rds')
 
-# #load filenames
-# load("file_name.Rdata")
-# 
-# #some funky data on this date
-# file_name=file_name[-which(file_name=="th968_2014_06_05_fleout")]
-
 #load dates
 dates=readRDS('dates.rds')
 
@@ -27,10 +21,20 @@ mtext('model',side=4,col='red',las=1,at=1.1,line=2)
 mtext('bin',side=4,col='blue',las=1,at=1.2,line=2)
 dev.off()
 
-yy_log=logical(length(unlist(obs)))
-yn_log=logical()
-nn_log=logical()
-ny_log=logical()
+#initializing binary prediction vectors
+yy_log=matrix(0,1,length(unlist(obs)))
+yn_log=matrix(0,1,length(unlist(obs)))
+nn_log=matrix(0,1,length(unlist(obs)))
+ny_log=matrix(0,1,length(unlist(obs)))
+
+#predicting bin
+
+#loop through days
+for (tick_day in 1:length(obs)){
+  if(obs[[tick_day]]==2 &bin[[tick_day]]==1){yy_log[tick_day]=0.5}
+  if(obs[[tick_day]]==)
+}
+
 
 #Total events
 N=sum(yy_log,yn_log,nn_log,ny_log)
