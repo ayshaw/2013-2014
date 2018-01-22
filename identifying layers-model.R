@@ -43,6 +43,9 @@ for (tick_s in 1:length(file_name)){
   #loading the saved data
   load(paste('data_fixed\\data_fixed',file_name[tick_s],'.Rdata',sep=''))
   
+  #save date
+  date[[tick_s]]=paste(substr(file_name[tick_s],7,10),substr(file_name[tick_s],12,13),substr(file_name[tick_s],15,16),sep='/')
+  
   #getting rid of missing data
   red=cbind(b$o3_mr,b$alt,b$temperature)
   blue=red[complete.cases(red), ]
@@ -137,15 +140,21 @@ for (tick_s in 1:length(file_name)){
     width_layers[[tick_s]]=width[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
     altitude_layers[[tick_s]]=altitude_layer[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
     
-    
-    #store date and number of qualified layers observed
-    date[[tick_s]]=paste(substr(file_name[tick_s],7,10),substr(file_name[tick_s],12,13),substr(file_name[tick_s],15,16),sep='/')
+    #store number of qualified layers observed
     num_layers[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in))
     
     #store maximum values and altitudes and saving it in obs_max files
     mod_max_o3=max_pt[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
     mod_max_alt=purple_reshape$x[index0_diff1[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]]
     write.csv(cbind(mod_max_o3,mod_max_alt),file = paste('max\\mod_max',file_name[tick_s],'.csv'),row.names = F)
+  }
+  
+  #in the case that there is no minima/max i.e. a flat profile
+  if (length(index0_diff1)==0){
+    num_layers[[tick_s]]=0
+    altitude_layers[[tick_s]]=NA
+    width_layers[[tick_s]]=NA
+  }
     
     #plotting layers identified compared with the observations
     png(paste('identifyinglayers\\identifyinglayers_mod',file_name[tick_s],'.png'))
@@ -158,7 +167,7 @@ for (tick_s in 1:length(file_name)){
     mtext(paste('no.layers=',num_layers[[tick_s]],sep=''), side = 4)
     abline(v=.08, lty=2,col='red')
     dev.off()
-  }
+  
   
 }
 
