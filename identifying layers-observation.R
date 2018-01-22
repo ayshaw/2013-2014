@@ -8,7 +8,7 @@ require('signal');require('prospectr');require('pspline')
 #create list to store data
 difference=list()
 diff_mean=list()
-num_layers_obs=list()
+num_layers=list()
 date=list()
 width_layers=list()
 altitude_layers=list()
@@ -111,20 +111,20 @@ for (tick_s in 1:length(file_name)){
   
   #store date of the maxima and number of qualified laminae observed
   date[[tick_s]]=paste(substr(file_name[tick_s],7,10),substr(file_name[tick_s],12,13),substr(file_name[tick_s],15,16),sep='/')
-  num_layers_obs[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in))
+  num_layers[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in))
   
   #store maximum values and altitudes and saving it in obs_max files
   obs_max_o3=max_pt[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
   obs_max_alt=purple_reshape$x[index0_diff1[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]]
-  write.csv(cbind(obs_max_o3,obs_max_alt),file = paste('obs_max\\obs_max',file_name[tick_s],'.csv'),row.names = F)
+  write.csv(cbind(obs_max_o3,obs_max_alt),file = paste('max\\obs_max',file_name[tick_s],'.csv'),row.names = F)
   
   #plotting layers identified
   png(paste('identifyinglayers\\identifyinglayers_observation',file_name[tick_s],'.png'))
-  plot(orange[,1],orange[,2],col=rgb(0.5,0.5,0.5,0.4),main=date[[tick_s]],xlab='ppmv',ylab='km',xlim=c(.03,.12),ylim=c(2,10))
+  plot(orange[,1],orange[,2],col=rgb(0.5,0.5,0.5,0.4),main=date[[tick_s]],xlab='ppmv',ylab='km',xlim=c(.03,.12),ylim=c(2,12))
   lines(z0$ysmth,z0$x)
   points(obs_max_o3,obs_max_alt,col='red')
   points(z0$ysmth[index0_diff2],z0$x[index0_diff2],col='blue')
-  mtext(paste('no.layers=',num_layers_obs[[tick_s]],sep=''), side = 4)
+  mtext(paste('no.layers=',num_layers[[tick_s]],sep=''), side = 4)
   abline(v=.08, lty=2,col='red')
   dev.off()
   
@@ -139,7 +139,7 @@ for (tick_s in 1:length(file_name)){
   axis(2,ylim=c(2,12),las=1)
   axis(1,xlim=c(0,.12),las=1,col='black')
   mtext('ozone ppmv',1,line=2,at=0.075,col='black')
-  mtext(paste('no.layers=',num_layers_obs[[tick_s]],sep=''), side = 4)
+  mtext(paste('no.layers=',num_layers[[tick_s]],sep=''), side = 4)
   abline(v=.08, lty=2,col='red')
   par(new=T)
   plot(orange[,4],orange[,2],col=rgb(1,165/255,0,0.4),ylab='',xlab='',ylim=c(2,12),xlim=range(orange[,4]),axes=F)
@@ -160,9 +160,13 @@ dev.off()
 png('hist\\histogram_altitude.png')
 hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes",col='blue')
 dev.off()
-png('nolayers\\nolayers.png')
+png('nolayers\\nolayers_obs.png')
 dateplot=as.Date(unlist(date),'%Y/%m/%d')
-plot(dateplot,num_layers_obs,type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
-save(num_layers_obs,file = "num_layers_obs.Rdata")
+plot(dateplot,num_layers,type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
 dev.off()
+
+#save number of layers and altitude of layers per date
+saveRDS(num_layers,file = "nolayers\\num_layers_obs.rds")
+saveRDS(altitude_layers,file='altitude_layers_obs.rds')
+
 

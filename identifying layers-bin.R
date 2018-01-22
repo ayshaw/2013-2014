@@ -5,6 +5,20 @@ setwd("C:\\Users\\ashaw\\Documents\\R\\EPS 236\\EPS 236 final project\\2013-2014
 load("file_name.Rdata")
 require('signal');require('prospectr');require('pspline')
 
+#the altitudes and levels
+lvl=seq(1,72,by=1)
+e=read.csv('levelalt.csv')
+f=matrix(unlist(e))
+g=seq(2,144,by=2)[1:72]
+alt=rev(f[g])
+
+#openning up the altitude boundaries for binning the observation data
+h=read.csv('boundaries.csv')
+bounds=h[seq(145,1,by=-2)[1:73],1]
+
+#some funky data on this date
+file_name=file_name[-which(file_name=="th968_2014_06_05_fleout")]
+
 #create list to store data
 difference=list()
 diff_mean=list()
@@ -12,18 +26,7 @@ num_layers=list()
 date=list()
 width_layers=list()
 altitude_layers=list()
-
-#load observation data from identifying layers-observation.R
-binnedobs_alt=unlist(read.csv('binnedobs_alt.csv'))
-binnedobs_o3=matrix(unlist(read.csv('binnedobs_o3.csv')),length(binnedobs_alt),33)
-
-#create matrix for altitude and ozone values
-magenta=matrix(0,length(binnedobs_alt),2)
-magenta[,2]=binnedobs_alt
-
-#some funky data on this date
-file_name=file_name[-which(file_name=="th968_2014_06_05_fleout")]
-
+binnedobs_o3=matrix(0,length(alt),length(file_name))
 
 for (tick_s in 1:length(file_name)){
   
@@ -55,11 +58,20 @@ for (tick_s in 1:length(file_name)){
   #using lapse rate to define tropopause
   lapse_rate=c(matrix(0,c(1,1)),diff(tprange_fit$ysmth))/c(matrix(0,c(1,1)),diff(tprange_fit$x))
   tpause=tprange_fit$x[which(abs(lapse_rate)<2)[1]]
-  in_tpause=which.max(binnedobs_alt)
-  in_ft=which(binnedobs_alt>2)[1]
-  magenta[,1]=binnedobs_o3[,tick_s]
-  purple=magenta[in_ft:in_tpause,]
-
+  in_tpause=which(orange[,2]>tpause)[1] 
+  if (is.na(in_tpause)==T){in_tpause=which.max(orange[,2])}
+  in_ft=which(orange[,2]>2)[1]
+  magenta=orange[in_ft:in_tpause,]
+  
+  #binning the observation data
+  binnedobs_o3=tapply(magenta[,1],.bincode(magenta[,2],breaks=bounds,right=T,include.lowest=T),mean,na.rm=T)
+  binnedobs_alt=tapply(magenta[,2],.bincode(magenta[,2],breaks=bounds,right=T,include.lowest=T),mean,na.rm=T)
+  
+  #constraining bin data to match the observed FT ranges
+  purple=matrix(0,nrow=length(binnedobs_alt),ncol=2)
+  purple[,1]=binnedobs_o3
+  purple[,2]=binnedobs_alt
+  
   #fit spline to ozone data
   z3=splinefun(x=purple[,2],y=purple[,1],method='monoH.FC')
   z0=list()
@@ -132,11 +144,11 @@ for (tick_s in 1:length(file_name)){
     #store maximum values and altitudes and saving it in obs_max files
     bin_max_o3=max_pt[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
     bin_max_alt=purple_reshape$x[index0_diff1[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]]
-    write.csv(cbind(bin_max_o3,bin_max_alt),file = paste('bin_max\\bin_max',file_name[tick_s],'.csv'),row.names = F)
+    write.csv(cbind(bin_max_o3,bin_max_alt),file = paste('max\\bin_max',file_name[tick_s],'.csv'),row.names = F)
   
     #plotting layers identified compared with the observations
-    png(paste('newbins\\identifyinglayers_bin',file_name[tick_s],'.png'))
-    plot(orange[,1],orange[,2],col=rgb(0.5,0.5,0.5,0.4),main=date[[tick_s]],xlab='ppmv',ylab='km',xlim=c(.03,.12),ylim=c(2,10))
+    png(paste('identifyinglayers\\identifyinglayers_bin',file_name[tick_s],'.png'))
+    plot(orange[,1],orange[,2],col=rgb(0.5,0.5,0.5,0.4),main=date[[tick_s]],xlab='ppmv',ylab='km',xlim=c(.03,.12),ylim=c(2,12))
     lines(purple[,1],purple[,2],lty=2)
     apple=read.csv(paste('obs_max\\obs_max',file_name[tick_s],'.csv'))
     lines(z0$ysmth,z0$x,col='black')
@@ -149,8 +161,27 @@ for (tick_s in 1:length(file_name)){
   
 }
 
-#plotting layers wrt time compared to the observations
-png('newbins\\nolayers_bin_comparison.png')
-dateplot=as.Date(unlist(date),'%Y/%m/%d')
-plot(dateplot,unlist(num_layers),type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
+# # plotting layers wrt time compared to the observations
+# png('newbins\\nolayers_bin.png')
+# dateplot=as.Date(unlist(date),'%Y/%m/%d')
+# plot(dateplot,unlist(num_layers),type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
+# dev.off()
+
+#histograms
+png('hist\\histogram_widths_bin.png')
+hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths',col='red')
 dev.off()
+png('hist\\histogram_altitude_bin.png')
+hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes",col='blue')
+dev.off()
+
+#plot number of layers in binned method
+png('nolayers\\nolayers_bin.png')
+dateplot=as.Date(unlist(date),'%Y/%m/%d')
+plot(dateplot,num_layers,type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
+dev.off()
+
+#saving number of layers and their altitudes per date
+saveRDS(num_layers,file = "nolayers\\num_layers_bin.rds")
+saveRDS(altitude_layers,file='altitude_layers_bin.rds')
+saveRDS(dateplot,file='dates.rds')
