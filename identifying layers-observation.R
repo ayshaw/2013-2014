@@ -163,7 +163,7 @@ for (tick_s in 1:length(file_name)){
 
 #histograms
 png('hist\\histogram_widths.png')
-hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths-obs',col='red',xlim=c(0,1.5))
+hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths-obs',col='red',xlim=c(0,1.5),ylim=c(0,7))
 dev.off()
 png('hist\\histogram_altitude.png')
 hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes-obs",col='blue',xlim=c(0,4),ylim=c(0,8))
