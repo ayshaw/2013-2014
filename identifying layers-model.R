@@ -179,10 +179,10 @@ dev.off()
 
 #histograms
 png('hist\\histogram_widths_mod.png')
-hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths',col='red')
+hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths-mod',col='red',xlim=c(0,1.5))
 dev.off()
 png('hist\\histogram_altitude_mod.png')
-hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes",col='blue')
+hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes-mod",col='blue',xlim=c(0,4))
 dev.off()
 png('nolayers\\nolayers_mod.png')
 dateplot=as.Date(unlist(date),'%Y/%m/%d')

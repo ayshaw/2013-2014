@@ -161,18 +161,12 @@ for (tick_s in 1:length(file_name)){
   
 }
 
-# # plotting layers wrt time compared to the observations
-# png('newbins\\nolayers_bin.png')
-# dateplot=as.Date(unlist(date),'%Y/%m/%d')
-# plot(dateplot,unlist(num_layers),type='l',col='black',xlab='month',ylab='no. layers',ylim=c(0,2))
-# dev.off()
-
 #histograms
 png('hist\\histogram_widths_bin.png')
-hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths',col='red')
+hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths-bin',col='red',xlim=c(0,1.5))
 dev.off()
 png('hist\\histogram_altitude_bin.png')
-hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes",col='blue')
+hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes-bin",col='blue',xlim=c(0,4))
 dev.off()
 
 #plot number of layers in binned method

@@ -13,7 +13,7 @@ dates=readRDS('dates.rds')
 png('comparisons\\number of layers.png')
 plot.new()
 par(new=T,mar=c(5,5,5,6))
-plot(dates,obs,col='black',type='l',main='2013-2014',ylab='no. layers')
+plot(dates,obs,col='black',type='l',main='2013-2014',ylab='no. layers',xlab='')
 lines(dates,bin,col='blue')
 lines(dates,mod,col='red')
 mtext('obs',side=4,col='black',las=1,at=1,line=2)
@@ -29,10 +29,45 @@ ny_log=matrix(0,1,length(unlist(obs)))
 
 #predicting bin
 
-#loop through days
+#loop through days and scenarios
 for (tick_day in 1:length(obs)){
-  if(obs[[tick_day]]==2 &bin[[tick_day]]==1){yy_log[tick_day]=0.5}
-  if(obs[[tick_day]]==)
+  if(obs[[tick_day]]==2 &bin[[tick_day]]==1){yy_log[[tick_day]]=0.5;ny_log[[tick_day]]=0.5}
+  if(obs[[tick_day]]==1 &bin[[tick_day]]==1){yy_log[[tick_day]]=1}
+  if(obs[[tick_day]]==0 &bin[[tick_day]]==0){nn_log[[tick_day]]=1}
+  if(obs[[tick_day]]==1 &bin[[tick_day]]==0){ny_log[[tick_day]]=1}
+  if(obs[[tick_day]]==0 &bin[[tick_day]]==1){yn_log[[tick_day]]=1}
+  if(obs[[tick_day]]==2 &bin[[tick_day]]==0){ny_log[[tick_day]]=1}
+  if(obs[[tick_day]]==0 &bin[[tick_day]]==2){yn_log[[tick_day]]=1}
+  }
+
+
+#Total events
+N=sum(yy_log,yn_log,nn_log,ny_log)
+yy=sum(yy_log)
+yn=sum(yn_log)
+nn=sum(nn_log)
+ny=sum(ny_log)
+
+# Fraction of Correct Prediction
+CP_b=(yy+nn)/N
+
+#Probability of Detection
+POD_b=yy/(yy+ny)
+
+#False Alarm Ratio
+FAR_b=yn/(yy+yn)
+
+#predicting model
+
+#loop through days and scenarios
+for (tick_day in 1:length(obs)){
+  if(obs[[tick_day]]==2 &mod[[tick_day]]==1){yy_log[[tick_day]]=0.5;ny_log[[tick_day]]=0.5}
+  if(obs[[tick_day]]==1 &mod[[tick_day]]==1){yy_log[[tick_day]]=1}
+  if(obs[[tick_day]]==0 &mod[[tick_day]]==0){nn_log[[tick_day]]=1}
+  if(obs[[tick_day]]==1 &mod[[tick_day]]==0){ny_log[[tick_day]]=1}
+  if(obs[[tick_day]]==0 &mod[[tick_day]]==1){yn_log[[tick_day]]=1}
+  if(obs[[tick_day]]==2 &mod[[tick_day]]==0){ny_log[[tick_day]]=1}
+  if(obs[[tick_day]]==0 &mod[[tick_day]]==2){yn_log[[tick_day]]=1}
 }
 
 
@@ -44,10 +79,10 @@ nn=sum(nn_log)
 ny=sum(ny_log)
 
 # Fraction of Correct Prediction
-PC=(yy+nn)/N
+CP_m=(yy+nn)/N
 
 #Probability of Detection
-POD=yy/(yy+ny)
+POD_m=yy/(yy+ny)
 
 #False Alarm Ratio
-FAR=yn/(yy+yn)
+FAR_m=yn/(yy+yn)

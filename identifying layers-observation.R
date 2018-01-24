@@ -108,10 +108,18 @@ for (tick_s in 1:length(file_name)){
   #record the width and altitude of the layers that met the criteria
   width_layers[[tick_s]]=width[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
   altitude_layers[[tick_s]]=altitude_layer[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
+ 
   
   #store date of the maxima and number of qualified laminae observed
   date[[tick_s]]=paste(substr(file_name[tick_s],7,10),substr(file_name[tick_s],12,13),substr(file_name[tick_s],15,16),sep='/')
-  num_layers[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in))
+  num_layers[[tick_s]]=length(intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)) 
+  
+  #exception for layer is split in two 8.29.13
+  if(tick_s==7)
+    {width_layers[[tick_s]]=sum(width_layers[[tick_s]])
+    altitude_layers[[tick_s]]=mean(altitude_layers[[tick_s]])
+    num_layers[[tick_s]]=1
+    }
   
   #store maximum values and altitudes and saving it in obs_max files
   obs_max_o3=max_pt[intersect(intersect(maxima_10_in,width_met_in),ppb_80_in)]
@@ -155,10 +163,10 @@ for (tick_s in 1:length(file_name)){
 
 #histograms
 png('hist\\histogram_widths.png')
-hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths',col='red')
+hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths-obs',col='red',xlim=c(0,1.5))
 dev.off()
 png('hist\\histogram_altitude.png')
-hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes",col='blue')
+hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes-obs",col='blue',xlim=c(0,4))
 dev.off()
 png('nolayers\\nolayers_obs.png')
 dateplot=as.Date(unlist(date),'%Y/%m/%d')
