@@ -166,7 +166,7 @@ png('hist\\histogram_widths_bin.png')
 hist(unlist(width_layers),breaks=10,xlab='Layer Width [km]',main='Distribution of Layer Widths-bin',col='red',xlim=c(0,1.5))
 dev.off()
 png('hist\\histogram_altitude_bin.png')
-hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes-bin",col='blue',xlim=c(0,4))
+hist(unlist(altitude_layers),breaks=10,xlab='Layer altitude [km]',main="Distribution of Layer altitudes-bin",col='blue',xlim=c(0,4),ylim=c(0,8))
 dev.off()
 
 #plot number of layers in binned method
