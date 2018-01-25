@@ -10,19 +10,22 @@ dates=readRDS('dates.rds')
 plot.new()
 par(new=T)
 
-#initialize matrix
+#initialize matrix and list
 layer=matrix(NA,nrow=length(dates),ncol=2)
+dates_vector=c(0,length=unlist(width_layers_obs))
 
 #loop through days
 for (tick_day in 1:length(dates)){
+  no_layers=length(width_layers_obs[[tick_day]])
   
-  #save first item in matrix first row
-  layer[tick_day,1]=width_layers_obs[[tick_day]][1]
   
-  #save second item in second row
-  if(length(width_layers_obs[[tick_day]])>1){
-  layer[tick_day,2]=width_layers_obs[[tick_day]][2]}
-  
+  # #save first item in matrix first row
+  # layer[tick_day,1]=width_layers_obs[[tick_day]][1]
+  # 
+  # #save second item in second row
+  # if(length(width_layers_obs[[tick_day]])>1){
+  # layer[tick_day,2]=width_layers_obs[[tick_day]][2]}
+  # 
   # #plot first layer
   # plot(dates[[tick_day]],width_layers_obs[[tick_day]][1],ylim=c(0,4))
   # par(new=T)
@@ -41,4 +44,3 @@ for (tick_day in 1:length(dates)){
   # }
   
 }
-plot(dates,layer[,1])
