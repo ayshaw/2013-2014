@@ -176,5 +176,5 @@ dev.off()
 #save number of layers and altitude of layers per date
 saveRDS(num_layers,file = "nolayers\\num_layers_obs.rds")
 saveRDS(altitude_layers,file='altitude_layers_obs.rds')
-
+saveRDS(width_layers,file="width_layers_obs.rds")
 

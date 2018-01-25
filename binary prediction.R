@@ -32,12 +32,12 @@ ny_log=matrix(0,1,length(unlist(obs)))
 #loop through days and scenarios
 for (tick_day in 1:length(obs)){
   if(obs[[tick_day]]==2 &bin[[tick_day]]==1){yy_log[[tick_day]]=0.5;ny_log[[tick_day]]=0.5}
-  if(obs[[tick_day]]==1 &bin[[tick_day]]==1){yy_log[[tick_day]]=1}
-  if(obs[[tick_day]]==0 &bin[[tick_day]]==0){nn_log[[tick_day]]=1}
-  if(obs[[tick_day]]==1 &bin[[tick_day]]==0){ny_log[[tick_day]]=1}
-  if(obs[[tick_day]]==0 &bin[[tick_day]]==1){yn_log[[tick_day]]=1}
-  if(obs[[tick_day]]==2 &bin[[tick_day]]==0){ny_log[[tick_day]]=1}
-  if(obs[[tick_day]]==0 &bin[[tick_day]]==2){yn_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==1 &bin[[tick_day]]==1){yy_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==0 &bin[[tick_day]]==0){nn_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==1 &bin[[tick_day]]==0){ny_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==0 &bin[[tick_day]]==1){yn_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==2 &bin[[tick_day]]==0){ny_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==0 &bin[[tick_day]]==2){yn_log[[tick_day]]=1}
   }
 
 
@@ -62,12 +62,12 @@ FAR_b=yn/(yy+yn)
 #loop through days and scenarios
 for (tick_day in 1:length(obs)){
   if(obs[[tick_day]]==2 &mod[[tick_day]]==1){yy_log[[tick_day]]=0.5;ny_log[[tick_day]]=0.5}
-  if(obs[[tick_day]]==1 &mod[[tick_day]]==1){yy_log[[tick_day]]=1}
-  if(obs[[tick_day]]==0 &mod[[tick_day]]==0){nn_log[[tick_day]]=1}
-  if(obs[[tick_day]]==1 &mod[[tick_day]]==0){ny_log[[tick_day]]=1}
-  if(obs[[tick_day]]==0 &mod[[tick_day]]==1){yn_log[[tick_day]]=1}
-  if(obs[[tick_day]]==2 &mod[[tick_day]]==0){ny_log[[tick_day]]=1}
-  if(obs[[tick_day]]==0 &mod[[tick_day]]==2){yn_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==1 &mod[[tick_day]]==1){yy_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==0 &mod[[tick_day]]==0){nn_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==1 &mod[[tick_day]]==0){ny_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==0 &mod[[tick_day]]==1){yn_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==2 &mod[[tick_day]]==0){ny_log[[tick_day]]=1}
+  else if(obs[[tick_day]]==0 &mod[[tick_day]]==2){yn_log[[tick_day]]=1}
 }
 
 
