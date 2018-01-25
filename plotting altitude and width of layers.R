@@ -10,37 +10,36 @@ dates=readRDS('dates.rds')
 plot.new()
 par(new=T)
 
-#initialize matrix and list
-layer=matrix(NA,nrow=length(dates),ncol=2)
-dates_vector=c(0,length=unlist(width_layers_obs))
+#set numeric (0) to NA
+idx=!(sapply(width_layers_obs,length))
+width_layers_obs[idx]=NA
+
+#initialize matrix 
+dates_vector=rep(0,length(unlist(width_layers_obs)))
+class(dates_vector)="Date"
 
 #loop through days
 for (tick_day in 1:length(dates)){
+  
+  #number of layers in that date
   no_layers=length(width_layers_obs[[tick_day]])
   
+  #put date in first 0 entry in dates_vector
+  dates_vector[which(dates_vector==0)[1]]=dates[[tick_day]]
   
-  # #save first item in matrix first row
-  # layer[tick_day,1]=width_layers_obs[[tick_day]][1]
-  # 
-  # #save second item in second row
-  # if(length(width_layers_obs[[tick_day]])>1){
-  # layer[tick_day,2]=width_layers_obs[[tick_day]][2]}
-  # 
-  # #plot first layer
-  # plot(dates[[tick_day]],width_layers_obs[[tick_day]][1],ylim=c(0,4))
-  # par(new=T)
-  # 
-  # #number of layers per date
-  # no_layers_today=length(width_layers_obs[[tick_day]])
-  # 
-  # #conditional if statement for multiple layers
-  # if (length(width_layers_obs[[tick_day]])>1){
-  #   
-  #   #loop through additional layers
-  #   for (tick_layers in 2:no_layers_today){
-  #   plot(dates[[tick_day]],width_layers_obs[[tick_day]][tick_layers],ylim=c(0,4))}
-  #   par(new=T)
-  #   
-  # }
+  #conditional for days with 1+ layers
+  if (no_layers>1){
+    for (tick_layers in 2:no_layers){
+      
+      #adds on the date into next zero place
+      dates_vector[which(dates_vector=='1970-01-01')[1]]=dates[[tick_day]]
+    }  
+  }
   
 }
+
+#unlist the width layers obs to plot it with the dates_vector
+width_layers_obs_vector=matrix(unlist(width_layers_obs),ncol=length(unlist(width_layers_obs)),nrow=1)
+
+#plotting the width layers obs wrt dates
+plot(dates_vector,width_layers_obs_vector,type='p')
