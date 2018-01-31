@@ -154,7 +154,7 @@ for (tick_s in 1:length(file_name)){
     lines(z0$ysmth,z0$x,col='black')
     points(apple$obs_max_o3,apple$obs_max_alt,col='red')
     points(z0$ysmth[index0_diff2],z0$x[index0_diff2],col='blue')
-    mtext(paste('no.layers=',num_layers[[tick_s]],sep=''), side = 4)
+    mtext(paste('no.layers=',num_layers[[tick_s]],sep=''), 'altitude layers:',altitude_layers[[tick_s]],side = 4)
     abline(v=.08, lty=2,col='red')
     dev.off()
   }

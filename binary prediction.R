@@ -86,3 +86,10 @@ POD_m=yy/(yy+ny)
 
 #False Alarm Ratio
 FAR_m=yn/(yy+yn)
+
+#make table of values
+table_val=matrix(c(CP_m,POD_m,FAR_m,CP_b,POD_b,FAR_b),ncol=3,byrow=TRUE)
+colnames(table_val)=c('CP','POD','FAR')
+rownames(table_val)=c('model','bin')
+table_val=as.table(table_val)
+

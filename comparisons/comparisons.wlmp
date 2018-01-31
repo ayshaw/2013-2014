@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="comparisons" themeId="0" version="65538" templateID="SimpleProjectTemplate">
+  <MediaItems>
+    <MediaItem id="53" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth952_2014_01_02_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="54" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth955_2014_01_30_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="55" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth957_2014_02_19_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="56" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth958_2014_02_26_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="57" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth959_2014_03_12_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="58" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth960_2014_03_18_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="59" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth961_2014_03_26_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="60" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth963_2014_04_16_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="61" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth964_2014_04_29_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="62" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth965_2014_05_07_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="63" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth966_2014_05_21_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="64" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth967_2014_05_29_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="65" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth968_2014_06_05_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="66" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth969_2014_06_18_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="34" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth933_2013_07_04_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="35" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth934_2013_07_10_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="36" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth935_2013_07_17_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="37" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth936_2013_07_31_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="38" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth937_2013_08_06_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="39" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth938_2013_08_14_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="40" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth939_2013_08_29_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="41" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth940_2013_09_12_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="42" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth941_2013_09_19_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="43" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth942_2013_09_26_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="44" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth943_2013_10_09_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="45" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth944_2013_10_23_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="46" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth945_2013_10_29_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="47" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth946_2013_11_07_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="48" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth947_2013_11_14_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="49" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth948_2013_11_28_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="50" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth949_2013_12_11_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="51" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth950_2013_12_18_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+    <MediaItem id="52" filePath="C:\Users\ashaw\Documents\R\EPS 236\EPS 236 final project\2013-2014\comparisons\mod vs obs vs binth951_2013_12_26_fleout.png" arWidth="480" arHeight="480" duration="0" songTitle="" songArtist="" songAlbum="" />
+  </MediaItems>
+  <Extents>
+    <ImageClip extentID="68" gapBefore="0" mediaItemID="64" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="51" gapBefore="0" mediaItemID="47" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="69" gapBefore="0" mediaItemID="65" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="52" gapBefore="0" mediaItemID="48" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="70" gapBefore="0" mediaItemID="66" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="53" gapBefore="0" mediaItemID="49" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="54" gapBefore="0" mediaItemID="50" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="55" gapBefore="0" mediaItemID="51" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="38" gapBefore="0" mediaItemID="34" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="56" gapBefore="0" mediaItemID="52" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="39" gapBefore="0" mediaItemID="35" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="57" gapBefore="0" mediaItemID="53" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="40" gapBefore="0" mediaItemID="36" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="58" gapBefore="0" mediaItemID="54" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="41" gapBefore="0" mediaItemID="37" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="59" gapBefore="0" mediaItemID="55" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="42" gapBefore="0" mediaItemID="38" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="60" gapBefore="0" mediaItemID="56" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="43" gapBefore="0" mediaItemID="39" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="61" gapBefore="0" mediaItemID="57" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="44" gapBefore="0" mediaItemID="40" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="62" gapBefore="0" mediaItemID="58" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="45" gapBefore="0" mediaItemID="41" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="63" gapBefore="0" mediaItemID="59" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="46" gapBefore="0" mediaItemID="42" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="64" gapBefore="0" mediaItemID="60" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="47" gapBefore="0" mediaItemID="43" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="65" gapBefore="0" mediaItemID="61" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="48" gapBefore="0" mediaItemID="44" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="66" gapBefore="0" mediaItemID="62" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="49" gapBefore="0" mediaItemID="45" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="67" gapBefore="0" mediaItemID="63" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ImageClip extentID="50" gapBefore="0" mediaItemID="46" duration="1">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyInt Name="rotateStepNinety" Value="0" />
+      </BoundProperties>
+    </ImageClip>
+    <ExtentSelector extentID="1" gapBefore="0" primaryTrack="true">
+      <Effects />
+      <Transitions />
+      <BoundProperties />
+      <ExtentRefs>
+        <ExtentRef id="38" />
+        <ExtentRef id="39" />
+        <ExtentRef id="40" />
+        <ExtentRef id="41" />
+        <ExtentRef id="42" />
+        <ExtentRef id="43" />
+        <ExtentRef id="44" />
+        <ExtentRef id="45" />
+        <ExtentRef id="46" />
+        <ExtentRef id="47" />
+        <ExtentRef id="48" />
+        <ExtentRef id="49" />
+        <ExtentRef id="50" />
+        <ExtentRef id="51" />
+        <ExtentRef id="52" />
+        <ExtentRef id="53" />
+        <ExtentRef id="54" />
+        <ExtentRef id="55" />
+        <ExtentRef id="56" />
+        <ExtentRef id="57" />
+        <ExtentRef id="58" />
+        <ExtentRef id="59" />
+        <ExtentRef id="60" />
+        <ExtentRef id="61" />
+        <ExtentRef id="62" />
+        <ExtentRef id="63" />
+        <ExtentRef id="64" />
+        <ExtentRef id="65" />
+        <ExtentRef id="66" />
+        <ExtentRef id="67" />
+        <ExtentRef id="68" />
+        <ExtentRef id="69" />
+        <ExtentRef id="70" />
+      </ExtentRefs>
+    </ExtentSelector>
+    <ExtentSelector extentID="2" gapBefore="0" primaryTrack="false">
+      <Effects />
+      <Transitions />
+      <BoundProperties />
+      <ExtentRefs />
+    </ExtentSelector>
+    <ExtentSelector extentID="3" gapBefore="0" primaryTrack="false">
+      <Effects />
+      <Transitions />
+      <BoundProperties />
+      <ExtentRefs />
+    </ExtentSelector>
+    <ExtentSelector extentID="4" gapBefore="0" primaryTrack="false">
+      <Effects />
+      <Transitions />
+      <BoundProperties />
+      <ExtentRefs />
+    </ExtentSelector>
+  </Extents>
+  <BoundPlaceholders>
+    <BoundPlaceholder placeholderID="SingleExtentView" extentID="0" />
+    <BoundPlaceholder placeholderID="Main" extentID="1" />
+    <BoundPlaceholder placeholderID="SoundTrack" extentID="2" />
+    <BoundPlaceholder placeholderID="Text" extentID="4" />
+    <BoundPlaceholder placeholderID="Narration" extentID="3" />
+  </BoundPlaceholders>
+  <BoundProperties>
+    <BoundPropertyFloatSet Name="AspectRatio">
+      <BoundPropertyFloatElement Value="1.3333332538604736" />
+    </BoundPropertyFloatSet>
+    <BoundPropertyFloat Name="SoundTrackMix" Value="0.5" />
+  </BoundProperties>
+  <ThemeOperationLog themeID="0">
+    <MonolithicThemeOperations />
+  </ThemeOperationLog>
+</Project>
